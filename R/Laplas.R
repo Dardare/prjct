@@ -1,4 +1,4 @@
-function (signals) {
+Laplas <- function (signals) {
   x <- matrix(0, nrow=64, ncol=6)
   x[1,1]<-x[41,1]<-x[9,1]<-x[15,1]<- -1
   x[8,1]<- 4

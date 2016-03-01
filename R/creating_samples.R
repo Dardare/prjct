@@ -1,4 +1,4 @@
-function (StimulusType, Flashing, laplas) {
+creating_samples <- function (StimulusType, Flashing, laplas) {
   p300stim <- which(diff(StimulusType)>0)+1
   otherstim <- which(diff(Flashing)>0)+1
   otherstim <- otherstim[!(otherstim %in% p300stim)]
