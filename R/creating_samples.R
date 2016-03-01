@@ -10,3 +10,26 @@ bigNiggas <- lapply(white, function(s){
 smallNiggas <- lapply(black, function(s){
   kek[(s-120):(s+119), ]
 })
+
+
+
+epochA <- matrix(ncol = 1440, nrow = 0)
+
+for (i in bigNiggas) {
+  epochA <- rbind(epochA, as.numeric(abs(mvfft(i))))
+}
+
+
+epochB <- matrix(ncol = 1440, nrow = 0)
+
+for (i in smallNiggas) {
+  epochB <- rbind(epochB, as.numeric(abs(mvfft(i))))
+}
+
+random <- rbind(epochB, epochA)
+
+honesty <- vector(mode = "logical", length = 180)
+honesty[1:90] <- TRUE
+
+random <- data.frame(random, honesty)
+
