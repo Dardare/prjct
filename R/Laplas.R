@@ -12,7 +12,8 @@ Laplas <- function (signals) {
   x[53,5]<- 4
   x[62,6]<-x[51,6]<- -1
   x[58,6]<- 2
-  
+
   laplas <- signals%*%x
   return(laplas)
 }
+
