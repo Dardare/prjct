@@ -3,5 +3,6 @@ testFFT <- function(file, wndSize=10){
   laplas <- Laplas(signals) #creating laplacian electrodes
   samples <- creating_samples(StimulusType, Flashing, laplas) #generate features
   frame <- Frame(samples) #fft and combine
-  Random(frame) #RF
+  test <- Random(frame) #RF
+  print(test)
 }
