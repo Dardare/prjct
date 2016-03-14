@@ -3,7 +3,7 @@ Frame <- function(samples, wndSize) {
   otherstimlist <- samples[[2]]
   partition <- seq(from = (wndSize/2)+1, to = 240, by = wndSize)
 
-  epochA <- matrix(ncol = 1440*(length(partition)), nrow = 0)
+  epochA <- matrix(ncol = 0, nrow = 0)
 
   for (i in p300list) {
     wnds <- lapply(partition, function(s) {
@@ -13,6 +13,8 @@ Frame <- function(samples, wndSize) {
     tmp <- do.call(c, lapply(wnds, function(k){ as.numeric(abs(mvfft(k)))  }))
     epochA <- rbind(epochA, tmp)
   }
+
+  epochA <- as.vector(epochA)
 
 
   epochB <- matrix(ncol = 0, nrow = 0)
@@ -24,6 +26,8 @@ Frame <- function(samples, wndSize) {
     tmp <- do.call(c, lapply(wnds, function(k){ as.numeric(abs(mvfft(k)))  }))
     epochB <- rbind(epochB, tmp)
   }
+
+  epochB <- as.vector(epochB)
 
   randomf <- rbind(epochB, epochA)
 
