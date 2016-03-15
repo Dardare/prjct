@@ -17,6 +17,17 @@ for (i in bigNiggas) {
   rm(blink)
 }
 
+for (i in p300list) {
+  wnds <- lapply(partition, function(s) {
+    i[(s-wndSize/2):(s+(wndSize/2-1)), ]
+  })
+  tmp <- matrix(ncol = 0, nrow = 0)
+  tmp <- do.call(c, lapply(wnds, function(k){ as.numeric(abs(mvfft(k)))  }))
+  epochA <- rbind(epochA, tmp)
+}
+
+
+
 for (i in smallNiggas) {
   blink <- lapply(spellshield, function(s) {
     i[(s-5):(s+4), ]
@@ -27,15 +38,16 @@ for (i in smallNiggas) {
 }
 
 
+partition <- seq(from = (wndSize/2)+1, to = 240, by = wndSize)
 
+epochA <- matrix(nrow = 0, ncol = 1440)
 
-
-
-for (i in bigNiggas) {
-  epochA <- rbind(epochA, as.numeric(abs(mvfft(i))))
+for (i in p300list) {
+  wnds <- lapply(partition, function(s) {
+    i[(s-wndSize/2):(s+(wndSize/2-1)), ]
+  })
+  tmp <- matrix(ncol = 0, nrow = 0)
+  tmp <- do.call(c, lapply(wnds, function(k){ as.numeric(abs(mvfft(k)))  }))
+  epochA <- rbind(epochA, tmp)
 }
 
-
-bigNiggas <- lapply(white, function(s){
-  kek[(s-120):(s+119), ]
-})
