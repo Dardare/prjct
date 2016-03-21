@@ -51,3 +51,5 @@ for (i in p300list) {
   epochA <- rbind(epochA, tmp)
 }
 
+partition <- seq(from = 1, to = 240-wndSize+1, by = wndSize/3)
+
