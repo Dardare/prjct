@@ -1,6 +1,6 @@
 Random <- function (frame) {
   localH2O = h2o.init()
   random.hex <- as.h2o(frame, destination_frame = "random")
-  random.rf = h2o.randomForest(x = c(1:1440), y = 1441, training_frame = random.hex, ntrees = 1000, max_depth = 100)
+  random.rf = h2o.randomForest(x = c(1:ncol(frame)-1), y = ncol(frame), training_frame = random.hex, ntrees = 1000, max_depth = 100)
   return(random.rf)
 }
