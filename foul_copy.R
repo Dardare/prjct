@@ -53,3 +53,8 @@ for (i in p300list) {
 
 partition <- seq(from = 1, to = 240-wndSize+1, by = wndSize/3)
 
+for ( i in warpbreaks) {
+  l <- i
+  break
+}
+
