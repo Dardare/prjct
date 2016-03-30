@@ -5,4 +5,5 @@ testFFT <- function(file, buildFeature){
   frame <- Frame(samples, wndSize, buildFeature) #fft and combine
   test <- Random(frame) #RF
   print(test)
+  test
 }

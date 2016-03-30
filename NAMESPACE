@@ -1,3 +1,4 @@
 import(R.matlab)
 import(h2o)
+import(reshape2)
 exportPattern("^[[:alpha:]]+")

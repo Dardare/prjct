@@ -10,4 +10,5 @@ License: What license is it under?
 LazyData: TRUE
 Imports:
   h2o,
-  R.matlab
+  R.matlab,
+  reshape2

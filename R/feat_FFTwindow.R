@@ -10,3 +10,7 @@ feat_FFTwindow <- function(wndSize, wndStep){
     as.vector(tmp)
   }
 }
+
+feat_laplacian <- function(data){
+  as.vector(data)
+}
