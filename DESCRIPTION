@@ -11,4 +11,6 @@ LazyData: TRUE
 Imports:
   h2o,
   R.matlab,
-  reshape2
+  reshape2,
+  abind,
+  ggplot2

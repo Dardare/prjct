@@ -1,4 +1,6 @@
 import(R.matlab)
 import(h2o)
 import(reshape2)
+import(abind)
+import(ggplot2)
 exportPattern("^[[:alpha:]]+")
