@@ -3,7 +3,8 @@ plotP300 <- function(file){
   laplas <- Laplas(data$signal)
   sig <- data$signal
   samples <- creating_samples(data$StimulusType, data$Flashing, laplas)
-  samples2 <- creating_samples(data$StimulusType, data$Flashing, as.matrix(sig[,11]))
+  samples2 <- creating_samples(data$StimulusType, data$Flashing, sig)
+  samples3 <- creating_samples(data$StimulusType, data$Flashing, as.matrix(sig[,11]))
 
 
   pl <- function(A, title){
@@ -29,7 +30,8 @@ plotP300 <- function(file){
 
   pl(samples[[1]], 'P300')
   pl(samples[[2]], 'NON P300')
-  pk(samples2[[1]], 'P300')
-  pk(samples2[[2]], 'NON P300')
-
+  pl(samples2[[1]], 'P300')
+  pl(samples2[[2]], 'NON P300')
+  pk(samples3[[1]], 'P300')
+  pk(samples3[[2]], 'NON P300')
 }
