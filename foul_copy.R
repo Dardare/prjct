@@ -58,3 +58,4 @@ for ( i in warpbreaks) {
   break
 }
 
+ggg <- olm[,11]
