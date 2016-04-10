@@ -14,7 +14,7 @@ heatmap_fft <- function(test, windowSize) {
   importance[,1] <- strtoi(importance[,1])
   importance <- importance[order(importance[,1]), ]
 
-  heatarray <- array(importance$percentage, dim=c(windowSize,6,nrow(importance)/6/windowSize))
+  heatarray <- array(importance$percentage, dim=c(windowSize,64,nrow(importance)/64/windowSize))
 
   print(
     ggplot(melt(apply(heatarray, c(2,1), sum)), aes(Var2, Var1, fill=value))+ scale_fill_gradient(low = "white", high = "steelblue") + geom_tile() + ggtitle('Hz x Ch')
