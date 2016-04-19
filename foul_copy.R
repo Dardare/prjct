@@ -79,3 +79,7 @@ qqq <- do.call(c, lapply(qqq, function(k){combn(x = k, m = 2, FUN = function(x) 
 qqq <- lapply(wnds, function(k){combn(x = k, m = 2, FUN = function(x) x[1] - x[2])})
 
 do.call(c, lapply(wnds, function(k){colMeans(k)}))
+
+pp <- 0
+
+for(i in seq(1:4)) {pp <- pp + 1}
