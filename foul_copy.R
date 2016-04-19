@@ -59,3 +59,23 @@ for ( i in warpbreaks) {
 }
 
 ggg <- olm[,11]
+
+
+for(i in p300list) {
+  wnds <- lapply(partition, function(s) {
+    i[1:20 + s-1, ]
+  })
+  wnds <- lapply(wnds, function(k) {colMeans(k)})
+  tmp <- do.call(c, lapply(wnds, function(k){combn(x = k, m = 2, FUN = function(x) x[1] - x[2])}))
+  as.vector(tmp)
+}
+
+qqq <- do.call(rbind, wnds)
+
+ppp <- apply(qqq, 2, function(k){combn(x = k, m = 2, FUN = function(x) x[1] - x[2])})
+
+qqq <- do.call(c, lapply(qqq, function(k){combn(x = k, m = 2, FUN = function(x) x[1] - x[2])}))
+
+qqq <- lapply(wnds, function(k){combn(x = k, m = 2, FUN = function(x) x[1] - x[2])})
+
+do.call(c, lapply(wnds, function(k){colMeans(k)}))
