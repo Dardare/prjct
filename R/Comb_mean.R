@@ -8,7 +8,7 @@ Comb_mean <- function(wndSize, wndStep){
       })
       wnds <- lapply(wnds, function(k) {colMeans(k)})
       wnds <- do.call(rbind, wnds)
-      tmp <- do.call(c, apply(wnds, 2, function(k){combn(x = k, m = 2, FUN = function(x) x[1] - x[2])}))
+      tmp <- apply(wnds, 2, function(k){combn(x = k, m = 2, FUN = function(x) x[1] - x[2])})
       as.vector(tmp)
     }
   }
