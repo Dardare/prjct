@@ -13,4 +13,14 @@ Imports:
   R.matlab,
   reshape2,
   abind,
-  ggplot2
+  ggplot2,
+  R.cache,
+  jsonlite,
+  abind,
+  reshape2,
+  data.table,
+  Rcpp (>= 0.11.3),
+  Resonance,
+  R3,
+  bit64,
+  plyr
