@@ -4,7 +4,7 @@
   list_events <- sep_files[[2]]
   target <- list()
   nontarget <- list()
-  for (i in seq(from = 1, to = 3, by = 1)) {
+  for (i in seq(from = 1, to = length(list_eeg), by = 1)) {
     #csv_data <- loadCSVdata(list_eeg[1], list_events[1])
     tmp <- wnd_create(list_eeg[i], list_events[i],  wndSize)
     tmp <- mean_subtr(tmp)
