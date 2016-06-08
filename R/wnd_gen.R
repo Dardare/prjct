@@ -7,7 +7,7 @@
   for (i in seq(from = 1, to = length(list_eeg), by = 1)) {
     #csv_data <- loadCSVdata(list_eeg[1], list_events[1])
     tmp <- wnd_create(list_eeg[i], list_events[i],  wndSize)
-    tmp <- mean_subtr(tmp)
+    #tmp <- mean_subtr(tmp)
     target <- c(target, tmp[[1]])
     nontarget <- c(nontarget, tmp[[2]])
   }
