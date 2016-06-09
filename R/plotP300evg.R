@@ -1,4 +1,4 @@
-plotP300evg <- function(tmp){
+plotP300evg <- function(target, nont){
   target <- tmp[[1]]
   nontarget <- tmp[[2]]
   samples1 <- target

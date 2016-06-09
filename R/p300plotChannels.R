@@ -1,10 +1,14 @@
-p300plotChannels <- function(target, nontarget, minSamplesAtXAxis, maxSamplesAtXAxis){
-  D <- melt(target[9])
+p300plotChannels <- function(data, minSamplesAtXAxis, maxSamplesAtXAxis){
+  arr <- abind(data, along = 3)
+  M <- rowMeans(arr, dims=2)
+
+  D <- melt(M)
+
   D$Var2 <- as.factor(D$Var2)
   levels(D$Var2) <- c('Cz','Pz','PO7','O1','Oz','O2','PO8')
   class(D$Var2) <- 'factor'
 
-  D$Var1 <- (D$Var1-abs(minSamplesAtXAxis))*2
+  ggplot(data=D) + geom_line(aes(x=Var1, y=value, color=Var2)) + facet_wrap(~Var2, scales = "free_y")
 
   dirtyP300Plot <- ggplot(data = D) +
     theme(plot.background  = element_rect(fill = 'white'),

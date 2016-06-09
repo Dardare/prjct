@@ -11,5 +11,6 @@
     target <- c(target, tmp[[1]])
     nontarget <- c(nontarget, tmp[[2]])
   }
-  save(target, nontarget, file='all.dat')
+  list(target, nontarget)
+  #save(target, nontarget, file='all.dat')
  }
