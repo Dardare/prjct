@@ -1,8 +1,8 @@
 plotP300evg <- function(tmp){
   target <- tmp[[1]]
   nontarget <- tmp[[2]]
-  samples1 <- target[1:10]
-  samples2 <- nontarget[1:10]
+  samples1 <- target
+  samples2 <- nontarget
 
 
   pl <- function(A, title){
@@ -16,6 +16,6 @@ plotP300evg <- function(tmp){
     )
   }
 
-  pl(samples1[[1]], 'P300')
-  pl(samples2[[2]], 'NON P300')
+  pl(samples1[[3]], 'P300')
+  pl(samples2[[3]], 'NON P300')
 }

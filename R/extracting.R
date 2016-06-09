@@ -41,11 +41,7 @@ wnd_create <- function(file1, file2, wndSize,
 
   ch.eeg   <- c(10,16,20,21,22,23,24)
   ch.ears  <- c(13,19)
-  ch.eog.r <- 1
-  ch.eog.l <- 2
-  ch.eog.b <- 4
-  ch.eog.t <- 3
-  ch.eog   <- c(ch.eog.r, ch.eog.l, ch.eog.b, ch.eog.t)
+
 
   ###############################################################################################################################
   # Flashes in P300 detect
@@ -64,7 +60,7 @@ wnd_create <- function(file1, file2, wndSize,
                   pipe.bandFilter(, lowFreq, highFreq, 50)
   )
 
-  wndEEG <- abind(lapply(P300, function(x){ EEG[minSamplesAtXAxis:maxSamplesAtXAxis-1+x,] } ), along=3)
+  wndEEG <- abind(lapply(P300, function(x){ EEG[minSamplesAtXAxis:maxSamplesAtXAxis+x,] } ), along=3)
 
 #  if(processBaseline)
 #  {
@@ -89,7 +85,7 @@ wnd_create <- function(file1, file2, wndSize,
 #  {
 #    avgP300 <- rowMeans(wndEEG, dims = 2)
 #  }
-  wndNP300 <- abind(lapply(NP300, function(x){ if(maxSamplesAtXAxis-1+x < nrow(EEG)) {EEG[minSamplesAtXAxis:maxSamplesAtXAxis-1+x,] }}), along=3)
+  wndNP300 <- abind(lapply(NP300, function(x){ if(maxSamplesAtXAxis+x < nrow(EEG)) {EEG[minSamplesAtXAxis:maxSamplesAtXAxis+x,] }}), along=3)
   tmp <- sample(1:length(wndNP300[1,1,]), length(wndEEG[1,1,]) , replace = F)
   wndNP300 <- wndNP300[,,tmp]
   wndEEG <- alply(wndEEG, 3)
