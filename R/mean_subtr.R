@@ -1,6 +1,6 @@
-mean_subtr <- function(tmp){
-  p300 <- tmp[[1]]
-  np300 <- tmp[[2]]
+mean_subtr <- function(p300, np300){
+ # p300 <- tmp[[1]]
+ # np300 <- tmp[[2]]
  # bigP300 <-  abind(p300, along = 3)
  # meanEEG <- rowMeans(bigP300, dims=2)
  # bigNP300 <-  abind(np300, along = 3)
