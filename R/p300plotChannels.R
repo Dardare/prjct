@@ -1,25 +1,28 @@
-p300plotChannels <- function(data, minSamplesAtXAxis, maxSamplesAtXAxis){
-  arr <- abind(data, along = 3)
+p300plotChannels <- function(target, nontarget){
+  arr <- abind(target, along = 3)
   M <- rowMeans(arr, dims=2)
 
+  narr <- abind(nontarget, along = 3)
+  NM <- rowMeans(narr, dims=2)
+
   D <- melt(M)
+  ND <- melt(NM)
 
-  D$Var2 <- as.factor(D$Var2)
-  levels(D$Var2) <- c('Cz','Pz','PO7','O1','Oz','O2','PO8')
-  class(D$Var2) <- 'factor'
+  D$color <- 'target'
+  ND$color <- 'nontaget'
 
-  ggplot(data=D) + geom_line(aes(x=Var1, y=value, color=Var2)) + facet_wrap(~Var2, scales = "free_y")
+  data <- rbind(D,ND)
 
-  dirtyP300Plot <- ggplot(data = D) +
-    theme(plot.background  = element_rect(fill = 'white'),
-          panel.background = element_rect(fill = "white"),
-          panel.grid.minor = element_line(colour = "darkgray"),
-          panel.grid.major = element_line(colour = "gray")) +
-    geom_line(aes(x=Var1, y=value)) + facet_wrap(~Var2, scales = "free_y")  + scale_x_continuous(minor_breaks=seq(minSamplesAtXAxis*2,maxSamplesAtXAxis*2,by=100)) +
-    labs(title=sprintf("Channels (P300)\nBandpass: %.3f-%.3fHz",
+  data$Var2 <- as.factor(data$Var2)
+  levels(data$Var2) <- c('Cz','Pz','PO7','O1','Oz','O2','PO8')
+  class(data$Var2) <- 'factor'
 
-                       0, 14,
-                       0, 0),
-         x = "Time [ms]", y="Voltage [uV]")
-print(dirtyP300Plot)
+  data$Var1 <- seq(-498, 500, by = 2) [data$Var1]
+
+
+  ggplot(data=data, aes(x=Var1, y=value, colour=color)) + geom_line() + facet_wrap(~Var2, scales = "free_y") +
+    labs(title=sprintf("Channels\nBandpass: %.1f-%.1f Hz",
+                       0, 14),
+         x = "Time [ms]", y="Voltage [uV]") +
+    geom_vline(xintercept = 0)
 }
