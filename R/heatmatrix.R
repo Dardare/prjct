@@ -7,7 +7,8 @@ heatmap_laplacian <- function(test, channels=6) {
   D <- melt(heatmatrix)
   D$Var2 <- seq(-498, 500, by = 2)[D$Var2]
 
-  ggplot(D, aes(Var2, Var1, fill=value))+ scale_fill_gradient(low = "white", high = "steelblue") + geom_tile()
+  ggplot(D, aes(Var2, Var1, fill=value))+ scale_fill_gradient(low = "white", high = "steelblue") + geom_tile() +
+  labs(title=sprintf("Variable importance\n"), x = "Time [ms]", y="Channels")
 }
 
 heatmap_fft <- function(test, windowSize, channels=7) {

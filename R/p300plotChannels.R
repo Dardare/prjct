@@ -21,7 +21,7 @@ p300plotChannels <- function(target, nontarget){
 
 
   ggplot(data=data, aes(x=Var1, y=value, colour=color)) + geom_line() + facet_wrap(~Var2, scales = "free_y") +
-    labs(title=sprintf("Channels\nBandpass: %.1f-%.1f Hz",
+    labs(title=sprintf("P300 and non-P300\nBandpass: %.1f-%.1f Hz",
                        0, 14),
          x = "Time [ms]", y="Voltage [uV]") +
     geom_vline(xintercept = 0)
